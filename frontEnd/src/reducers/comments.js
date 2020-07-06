@@ -1,8 +1,10 @@
 import { SAVE_COMMENT } from 'actions/type';
 
-export default (state = [], action) => {
+const initialState = [];
 
-    switch(action.payload){
+export default (state = initialState, action) => {
+    
+    switch(action.type){
 
         case SAVE_COMMENT:
             return [...state, action.payload];

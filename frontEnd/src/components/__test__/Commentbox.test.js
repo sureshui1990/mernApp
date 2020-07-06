@@ -3,9 +3,7 @@ import { mount } from 'enzyme';
 import CommentBox from 'components/CommentBox';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from 'reducers';
+import AppStore from 'store';
 
 describe('Has textarea is ', () => {
 
@@ -13,7 +11,7 @@ describe('Has textarea is ', () => {
 
     beforeEach( () => {
         wrapper = mount(
-        <Provider store={createStore(rootReducer,applyMiddleware(thunk))}>
+        <Provider store={AppStore}>
         <CommentBox />
         </Provider>);
         wrapper.find('textarea').simulate('change', { target: { value: 'new comment'}});
