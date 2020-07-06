@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import  { connect } from 'react-redux';
+import * as actions from 'actions';
 
-export default class CommentBox extends Component {
+class CommentBox extends Component {
     constructor(){
         super();
         this.state = {
@@ -14,14 +16,14 @@ export default class CommentBox extends Component {
         event.preventDefault();
 
         // ToDO - action creator
-
+        this.props.addComment(this.state.comment);
         // Reset after the comment save
         this.setState({comment:''})
     }
     render() {
 
         let {comment} = this.state;
-
+        
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -36,4 +38,10 @@ export default class CommentBox extends Component {
             </div>
         )
     }
+};
+const mapDispatchToProps = dispatch => {
+    return {
+        addComment: () => dispatch(actions.addComment)
+    }
 }
+export default connect(null, mapDispatchToProps )(CommentBox);
