@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CommentBox from './CommentBox';
 import CommentList from './CommentList';
 
-export default class App extends Component {
-    render() {
-        return (<div>
-            <CommentBox />
-            <CommentList />
-        </div>);
-    }
+import { Container } from 'semantic-ui-react';
+
+export default () => {
+        return <div style={{paddingTop:'1em'}}>
+                    <Container>
+                        <CommentBox />
+                        <CommentList />
+                    </Container>
+                </div>
+        
 }
